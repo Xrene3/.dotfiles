@@ -2,24 +2,12 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-echo "
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢿⣛⡻⣉⣛⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⡿⠟⣛⣫⣬⣶⣾⣿⣿⣿⣧⡵⣪⢧⣷⣯⡻⣻⡿⡻⣿⣿⣿⣿⣿
-⣿⣿⣿⡿⣋⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⡘⣴⣿⣿⣿⣷⡶⡩⠏⣿⣿⣿⢫⣿
-⣿⣿⠿⣳⣿⣿⣿⠋⠁⣿⣿⣿⣿⣿⣿⣷⣶⣿⣿⣿⣿⡇⢨⢰⣿⣮⢻⣿⡗⣯
-⢷⣶⣿⣿⣿⣿⠃⣴⣷⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⣄⠀⢻⣿⣷⡽⡱⣺
-⡿⠙⣿⣿⣿⠇⣤⣶⡍⡇⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⢿⡞⣄⠀⣿⣿⣴⣿⣿
-⠀⣸⣿⣿⠋⣼⣿⣿⣿⣿⡘⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⣟⡛⠿⡆⠻⣿⣿⣿⣿
-⠀⣿⣿⠃⣰⣿⣿⣿⣿⣿⣷⡸⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⣷⡑⠈⡽⣿⣿⣿
-⢠⣿⠇⣠⣿⣿⡟⠙⣿⣿⣿⣷⡌⢿⣿⣿⣿⣿⣿⡇⣿⣿⣿⣿⣷⡄⠙⣟⢸⣿
-⣼⠇⢰⣿⣿⣿⠀⠀⣿⣿⣿⣿⣿⣦⡙⢿⣿⣿⣿⢱⡿⠛⣿⣿⣿⣿⡄⠸⠨⢻
-⢇⠃⢼⣿⣿⣿⠀⢀⣿⣿⣿⣿⣿⣿⣿⣦⣍⡻⢣⣾⠁⠀⣿⣿⣿⣿⠇⡀⡀⢙
-⠸⠀⠀⢹⣿⣿⣷⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣾⡟⠀⢠⣿⣿⣿⣿⢰⠀⣿⠈
-⠃⠀⠀⠨⣿⣿⣿⣿⣿⣿⢛⣛⡛⠿⠻⠿⢿⣿⣿⣿⣦⡾⣿⣿⣿⠟⢸⠀⢻⡄
-⠰⢰⣤⣤⢽⣿⣿⣿⣿⣿⣧⡙⢿⣿⠿⢂⣼⣿⣿⣿⣿⣿⣿⠟⠀⠀⠈⠀⢸⣷
-⠀⢣⠿⡳⠛⣈⣄⠉⠛⠿⣿⣿⣷⣶⣾⣿⣿⣿⣿⣿⠿⠟⠁⠀⠀⠀⡄⠀⢸⣿
-⢠⣷⣤⣶⣿⣿⡿⢓⣠⣄⠀⠈⠁⠈⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⢀⠁⠀⠼⢿
-"
+ASCII_DIR="$HOME/.dotfiles/ascii"
+
+file=$(ls "$ASCII_DIR" | shuf -n 1)
+cat "$ASCII_DIR/$file"
+echo ""
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -138,4 +126,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias bossclaude=
+
+source "$HOME/.dotfiles/.env"
+
+alias git-person="git config --global user.name "$PERSONAL_USERNAME" && git config --global user.email "$PERSONAL_EMAIL" && gh auth switch -u "$PERSONAL_USERNAME" && gh auth status && git config user.email"
+
+alias git-work="git config --global user.name "$WORK_USERNAME" && git config --global user.email "$WORK_EMAIl" && gh auth switch -u "$WORK_USERNAME" && gh auth status && git config user.email"
+
+[ -f ~/.dotfiles/commands.local.sh ] && source ~/.dotfiles/commands.local.sh
