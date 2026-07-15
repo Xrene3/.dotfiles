@@ -1,64 +1,40 @@
 {
-    "custom/launcher": {
-        "format": "",
-        "on-click": "fuzzel",
-        "tooltip-format": "Application Launcher"
+    "custom/arch": {
+        "format": "󰣇",
+        "tooltip": true,
+        "tooltip-format": "btw"
     },
 
-    "custom/filemanager": {
-        "format": "",
-        "on-click": "thunar",
-        "tooltip-format": "File Manager"
-    },
 
-    "custom/terminal": {
-        "format": "",
-        "on-click": "alacritty --working-directory ~/",
-        "tooltip-format": "Terminal"
-    },
-    
     "hyprland/workspaces": {
+        "disable-scroll": true,
         "all-outputs": true,
+        "warp-on-scroll": false,
         "format": "{name}",
-        "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
-        "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null"
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
     },
-
-    "hyprland/window": {
-        "max-length": 160,
-        "separate-outputs": true,
-        "tooltip": false,
-        "icon": true
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     },
-
-    "mpris": {
-        "format": "{player_icon} {artist} - {title} {status_icon}",
-        "format-paused": "{player_icon} {artist} - {title} {status_icon}",
-        "tooltip-format": "{artist} - {title} - {album} {length}",
-        "player-icons": {
-            "default": ""
-        },
-        "status-icons": {
-            "playing": "",
-            "paused": "",
-            "stopped": ""
-        },
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl stop"
-    },
-
     "pulseaudio": {
-        "scroll-step": 5, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰅶 {icon} {format_source}",
-        "format-muted": "󰅶 {format_source}",
-        "format-source": "{volume}% ",
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon} {volume}%  {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": " {volume}%",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "󰂑",
-            "headset": "󰂑",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
@@ -66,38 +42,59 @@
         },
         "on-click": "pavucontrol"
     },
-
-    "tray": {
-        "icon-size": 20,
-        "spacing": 10
+    "network": {
+        "format-wifi": "   {essid} ({signalStrength}%)",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+	"on-click": "sh ~/scripts/rofi-wifi-menu/rofi-wifi-menu.sh"
+	 
     },
-
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "  {}%",
+	"tooltip": true
+    },
+    "temperature": {
+        "interval": 10,
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
+        "critical-threshold": 100,
+        "format-critical": " {temperatureC}",
+        "format": " {temperatureC}°C"
+    },
+    "hyprland/language": {
+       "format": "  {}",
+       "format-en": "EN",
+       "format-ru": "RU"
+    },
     "battery": {
         "states": {
-            // "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰃨",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
+        "format": "{icon}  {capacity}%",
+        "format-full": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{time}  {icon}",
         "format-icons": ["", "", "", "", ""]
     },
-
-    "clock": {
-        // "timezone": "America/New_York",
-        "format": "{:%I:%M %p}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%A %B %Od %Y}"
+    "battery#bat2": {
+        "bat": "BAT2"
     },
-
+    "clock": {
+        "format": "{:%H:%M | %e %B} ",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
     "custom/power": {
-        "format" : "",
-		"tooltip-format": "Session Menu",
-		"on-click": "wlogout"
+        "format": "",
+        "tooltip": false,
+        "on-click": "wlogout"
     }
+
 }
