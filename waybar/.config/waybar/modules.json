@@ -1,11 +1,10 @@
 {
-    "custom/arch": {
-        "format": "󰣇",
+    "custom/logo": {
+        "format": " ",
         "tooltip": true,
-        "tooltip-format": "btw"
+        "tooltip-format": "m a m b o",
+        "on-click": "rofi -show drun"
     },
-
-
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -95,6 +94,15 @@
         "format": "",
         "tooltip": false,
         "on-click": "wlogout"
+    },
+    "custom/cava": {
+        "cava_config": "~/.dotfiles/cava/waybar_cava.conf",
+        "input_delay": 2,
+        "actions": {
+            "on-click-right": "mode"
+        }
+    },
+    "cava": {
+        "cava_config": "~/.config/cava/config"
     }
-
 }

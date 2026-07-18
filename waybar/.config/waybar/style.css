@@ -91,6 +91,7 @@ window#waybar {
   color: #c0caf5;
   border:none;
   border-radius: 15px;
+  padding: 15px;
 }
 
 #workspaces button.active {
@@ -103,12 +104,18 @@ window#waybar {
   box-shadow: none;
 }
 
-#custom-arch {
-    margin-left: 5px;
-    padding: 0 10px;
-    font-size: 25px;
-    transition: color .5s;
+#custom-logo {
+    min-width: 50px;
+    min-height: 50px;
+    background-image: url("/home/xrene/.dotfiles/assets/mambo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px 50px;
+    border-radius: 50%;
+    color: transparent;
+    border: 2px solid rgba(185, 78, 232, 0.7);
 }
-#custom-arch:hover {
+#custom-logo:hover {
     color: #1793d1;
 }
+

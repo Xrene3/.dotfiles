@@ -7,11 +7,13 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "custom/arch",
+        "custom/logo",
         "hyprland/workspaces"
     ],
     "modules-center": [
-        "hyprland/window"
+        // "hyprland/window",
+        "custom/cava",
+        "cava"
     ],
     "modules-right": [
         "idle_inhibitor",
